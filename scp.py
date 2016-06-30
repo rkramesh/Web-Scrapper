@@ -2,7 +2,7 @@
 import bs4
 import requests
 _author_ = "Rk"
-_pyversion_ "2.7 or lower"
+_pyversion_ = "2.7 or lower"
 def search(query):
     
     url = 'http://www.amazon.in/s/ref=nb_sb_noss_2?url=search-alias' \
