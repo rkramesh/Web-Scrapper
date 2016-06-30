@@ -2,7 +2,7 @@
 Simple Scrapper to get price details from amazon
 
 ## Introduction
-This is a Simple scraper that gets data from the amazon website
+This is a Simple scraper that gets data from the amazon website and
 It doesnt need any apikey or login details
 
 ## Dependencies
