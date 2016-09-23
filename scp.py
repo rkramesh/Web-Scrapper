@@ -69,7 +69,8 @@ def scrape(url):
             prods['imgurl'] = img_url_list[0]['src'].encode('utf-8')
             
         prod_list.append(prods.copy())
-    #start here    
+    #start here
+    # you can print less info my directly calling the tag:ex  print prods['star'], prods['price'] 
     print prod_list
            
      #print type(prods)
