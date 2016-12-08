@@ -71,7 +71,10 @@ def scrape(url):
         prod_list.append(prods.copy())
     #start here
     # you can print less info my directly calling the tag:ex  print prods['star'], prods['price'] 
-    print prod_list
+##    print prod_list
+    for i, entry in enumerate(prod_list):
+        print 'result:'+str(i)
+        print entry; 
            
      #print type(prods)
 if __name__ == "__main__":
