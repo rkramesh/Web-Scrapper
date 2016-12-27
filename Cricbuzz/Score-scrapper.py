@@ -1,8 +1,6 @@
 import os, re
-import bs4,time,yaml,json
+import bs4,time
 import requests
-from pprint import pprint
-
 class Score(object):
 
     def __init__(self):
