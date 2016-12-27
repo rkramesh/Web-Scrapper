@@ -16,6 +16,6 @@ python 2.7 or lower
 what would you like to search for?  eg: 'men watch' 'menwatch'
 ![image](https://cloud.githubusercontent.com/assets/12068512/21493842/a3e3aeaa-cc33-11e6-9053-3a5d3ae3d96c.png)
 
-select the option 
+Enter the required option to get updates
 
 ![image](https://cloud.githubusercontent.com/assets/12068512/21493951/1e83beb6-cc34-11e6-906b-48eafb27d817.png)
