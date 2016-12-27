@@ -4,7 +4,7 @@
 
 Web scraping (web harvesting or web data extraction) is data scraping used for extracting data from websites.
 ## Introduction
-You can perform web scrapping in various ways, including use of Google Docs to almost every programming language. I would resort to Python because of its ease and rich eocsystem. It has a library known as ‘BeautifulSoup’ which assists this task. 
+You can perform web scrapping in various ways, including use of Google Docs to almost every programming language. I have used  Python because of its ease and rich eocsystem. It has a library known as ‘BeautifulSoup’ which assists this task. 
 
 ## Dependencies
 * [bs4](https://pypi.python.org/pypi/beautifulsoup4)
@@ -17,3 +17,4 @@ python 2.7 or lower
 ## Usage
 python script.py
 
+Happy Learning Python!
