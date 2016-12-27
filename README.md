@@ -1,4 +1,7 @@
 # Price-Scrapper
+
+   ![image](https://cloud.githubusercontent.com/assets/12068512/21493392/48149c94-cc31-11e6-81e8-403c029bd2b8.png)
+
 Simple Scrapper to get price details from amazon
 
 ## Introduction
