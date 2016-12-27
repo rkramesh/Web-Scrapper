@@ -15,7 +15,8 @@ python 2.7 or lower
 ## Usage
 what would you like to search for?  eg: 'men watch' 'menwatch'
 
+![image](https://cloud.githubusercontent.com/assets/12068512/21500352/2e085a74-cc64-11e6-9ff3-387baf87c1d4.png)
 
-[{'Product': "Matrix Analog Black Dial Men's Watch-WCH-121", 'star': '3.4 out of 5 stars', 
-'url': 'http://www.amazon.in/gp/product/B019EZNEXQ', 'price': '299.00', 
-'by': 'Matrix', 'imgurl': 'http://ecx.images-amazon.com/images/I/514kNzsbrCL._AC_US160_.jpg'}
+![image](https://cloud.githubusercontent.com/assets/12068512/21500395/7f83b74a-cc64-11e6-9456-530cc5556deb.png)
+
+
