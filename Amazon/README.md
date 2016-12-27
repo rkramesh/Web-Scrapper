@@ -13,9 +13,12 @@ It doesnt need any apikey or login details
 python 2.7 or lower
 
 ## Usage
-what would you like to search for?  eg: 'men watch' 'menwatch'
+
+Type the required search term between quotes
 
 ![image](https://cloud.githubusercontent.com/assets/12068512/21500352/2e085a74-cc64-11e6-9ff3-387baf87c1d4.png)
+
+Press enter 
 
 ![image](https://cloud.githubusercontent.com/assets/12068512/21500395/7f83b74a-cc64-11e6-9456-530cc5556deb.png)
 
