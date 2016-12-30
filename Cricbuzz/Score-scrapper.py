@@ -3,7 +3,6 @@ import bs4,time
 import requests
 class Score(object):
     def __init__(self):
-
         #will be using it for enhancements
         pass
     @staticmethod
@@ -17,9 +16,10 @@ class Score(object):
                                                        '120 Safari/537.36'})
         soup = bs4.BeautifulSoup(response.content, "html.parser")
         optionlist={}
-        status={}#
+        status={}
         global mstatus
         for count,tag in enumerate (soup.find_all('li',{'class':re.compile('cb-lst-mtch')})):
+            count+=1
             print ("Enter '{}' for '{}' ".format(count,tag.a['title']))
             optionlist[count] = tag.a['href']
             status[count]=tag.a['title']
@@ -42,16 +42,13 @@ class Score(object):
                                                            'Gecko) Chrome/37.0.2062.'
                                                            '120 Safari/537.36'})
             soup = bs4.BeautifulSoup(response.content, "html.parser")
-            
             print '\n'+soup.title.text+'\n'
-            
             if mstatus.rsplit(None, 1)[-1] == 'Live' :
                 print soup.find('div',{'class':re.compile('cb-mini-col')} ).text.strip()+'\n'
                 match='live'
             else:
                 match='past'
             duplicate=''#remove duplicate entries
-            
             for tag in soup.find_all(re.compile('.')):
                 try:
                     if match == 'live':
@@ -61,21 +58,15 @@ class Score(object):
                         if len(tag.p.text) == duplicate:
                             continue
                         else:
-                            if tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}):
-                                print tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text+' '+tag.p.text
-                            else:
-                                print tag.p.text+'\n'
-                                duplicate=len(tag.p.text)
+                            print tag.p.text+'\n'
+                            duplicate=len(tag.p.text)                            
                 except:
                     pass
             if match == 'past':
                 break
-           
             else:
                 time.sleep(12)
                 print "\n" *40
-
-
 while True:
     print "\n" * 500
     Score.getMatch()
