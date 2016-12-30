@@ -1,8 +1,6 @@
 import os, re
 import bs4,time
 import requests
-
-
 class Score(object):
     def __init__(self):
 
@@ -37,7 +35,6 @@ class Score(object):
     def getScore(url,mstatus):
        
         while True:
-##            print test.rsplit(None, 1)[-1]
             response = requests.get(url,
                                     headers={'User-agent': 'Mozilla/5.0 (Windows NT '
                                                            '6.2; WOW64) AppleWebKit/'
@@ -59,6 +56,7 @@ class Score(object):
                 try:
                     if match == 'live':
                          print tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text+' '+tag.p.text
+                        
                     elif match == 'past':
                         if len(tag.p.text) == duplicate:
                             continue
@@ -75,12 +73,14 @@ class Score(object):
            
             else:
                 time.sleep(12)
+                print "\n" *40
 
 
 while True:
     print "\n" * 500
     Score.getMatch()
-    print '#'*30+mstatus+'#'*30
+    print '#'*30+mstatus.rsplit(',', 1)[-1]+'#'*30+'\n'
+    print 'Match Status:'+mstatus+'\n'
     raw_input("Press Any Key Continue  or CTRL+C to exit!...")
     
     
