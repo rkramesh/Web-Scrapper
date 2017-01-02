@@ -26,14 +26,12 @@ class Score(object):
         choice = int(raw_input("\n>Enter Your Option here: "))
         if choice in optionlist:
            mstatus=status[choice]
-           return Score.getScore('http://www.cricbuzz.com'+optionlist[choice],mstatus)
-           
+           return Score.getScore('http://www.cricbuzz.com'+optionlist[choice],mstatus)           
         else:
             print'Wrong Option,Select again'
             Score.getMatch()
     @staticmethod
-    def getScore(url,mstatus):
-       
+    def getScore(url,mstatus):       
         while True:
             response = requests.get(url,
                                     headers={'User-agent': 'Mozilla/5.0 (Windows NT '
@@ -43,6 +41,8 @@ class Score(object):
                                                            '120 Safari/537.36'})
             soup = bs4.BeautifulSoup(response.content, "html.parser")
             print '\n'+soup.title.text+'\n'
+            print '#'*30+mstatus.rsplit(',', 1)[0]+'#'*30+'\n'
+            print soup.find('div',{'class':re.compile('cb-nav-subhdr')} ).text.strip()+'\n'
             if mstatus.rsplit(None, 1)[-1] == 'Live' :
                 print soup.find('div',{'class':re.compile('cb-mini-col')} ).text.strip()+'\n'
                 match='live'
@@ -53,14 +53,13 @@ class Score(object):
                 try:
                     if match == 'live':
                          print tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text+' '+tag.p.text
-                        
                     elif match == 'past':
                         if len(tag.p.text) == duplicate:
                             continue
                         else:
                             print tag.p.text+'\n'
                             duplicate=len(tag.p.text)                            
-                except:
+                except Exception as e:
                     pass
             if match == 'past':
                 break
@@ -72,9 +71,5 @@ while True:
     Score.getMatch()
     print '#'*30+mstatus.rsplit(',', 1)[0]+'#'*30+'\n'
     print 'Match:'+mstatus+'\n'
-    print 'Match Status:'+mstatus.rsplit('-', 1)[-1]+'\n'
+    print 'Match Status:'+mstatus.rsplit('-', 1)[-1]+'\n'        
     raw_input("Press Any Key Continue  or CTRL+C to exit!...")
-    
-    
-
-    
