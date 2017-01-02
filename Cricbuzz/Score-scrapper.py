@@ -70,8 +70,9 @@ class Score(object):
 while True:
     print "\n" * 500
     Score.getMatch()
-    print '#'*30+mstatus.rsplit(',', 1)[-1]+'#'*30+'\n'
-    print 'Match Status:'+mstatus+'\n'
+    print '#'*30+mstatus.rsplit(',', 1)[0]+'#'*30+'\n'
+    print 'Match:'+mstatus+'\n'
+    print 'Match Status:'+mstatus.rsplit('-', 1)[-1]+'\n'
     raw_input("Press Any Key Continue  or CTRL+C to exit!...")
     
     
