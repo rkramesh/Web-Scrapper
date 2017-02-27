@@ -1,8 +1,13 @@
 import os, re
 import bs4,time
 import requests
+from plyer import notification
+
+
+old='first'
 class Score(object):
     def __init__(self):
+
         #will be using it for enhancements
         pass
     @staticmethod
@@ -30,8 +35,10 @@ class Score(object):
         else:
             print'Wrong Option,Select again'
             Score.getMatch()
+    
     @staticmethod
-    def getScore(url,mstatus):       
+    def getScore(url,mstatus):
+
         while True:
             response = requests.get(url,
                                     headers={'User-agent': 'Mozilla/5.0 (Windows NT '
@@ -53,6 +60,8 @@ class Score(object):
                 try:
                     if match == 'live':
                          print tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text+' '+tag.p.text
+                         if 'run' in tag.p.text:
+                             Score.rknotify(tag.p.text,tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text)
                     elif match == 'past':
                         if len(tag.p.text) == duplicate:
                             continue
@@ -66,6 +75,24 @@ class Score(object):
             else:
                 time.sleep(12)
                 print "\n" *40
+    @staticmethod
+    def rknotify(rk,count1):
+       print 'entering'
+       global old
+##       if old == 'first': print count1
+##       print ("before count1 '{}' for old'{}' ".format(count1,old))
+       if count1 != old:
+            notification.notify(
+            title='FOUR',
+            message=rk,
+            app_name='Cricbuzz',
+            app_icon='1.ico',
+            )
+            old = count1
+##            print ("after count1 '{}' for old'{}' ".format(count1,old))
+       else:
+            print 'cool'
+
 while True:
     print "\n" * 500
     Score.getMatch()
@@ -73,3 +100,4 @@ while True:
     print 'Match:'+mstatus+'\n'
     print 'Match Status:'+mstatus.rsplit('-', 1)[-1]+'\n'        
     raw_input("Press Any Key Continue  or CTRL+C to exit!...")
+
