@@ -16,7 +16,7 @@ from plyer import notification
 ##	if not team1_score:
 class Score(object):
     alert={}
-    titles = ['FOUR','out ','SIX','runs','!!']
+    titles = ['FOUR',' out ','SIX','runs','!!']
     def __init__(self):
 
         #will be using it for enhancements
