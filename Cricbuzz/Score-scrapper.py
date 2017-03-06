@@ -2,10 +2,21 @@ import os, re
 import bs4,time
 import requests
 from plyer import notification
-
-
-old='first'
+##def getscore():
+##	url = "http://www.espncricinfo.com/icc-cricket-world-cup-2015/engine/match/656493.json"
+##	r = requests.get(url)
+##	while r.status_code is not 200:
+##		r = requests.get(url)
+##	data = json.loads(r.text)
+##	player_status = data['match']['current_summary'].strip()
+##	team1_name = data['other_scores']['international'][0]['team1_name'].strip()
+##	team1_score = data['other_scores']['international'][0]['team1_desc'].replace('&nbsp;ov',' ov').strip()
+##	team2_name = data['other_scores']['international'][0]['team2_name'].strip()
+##	team2_score = data['other_scores']['international'][0]['team2_desc'].replace('&nbsp;ov',' ov').strip()
+##	if not team1_score:
 class Score(object):
+    alert={}
+    titles = ['FOUR','out ','SIX','runs','!!']
     def __init__(self):
 
         #will be using it for enhancements
@@ -35,10 +46,8 @@ class Score(object):
         else:
             print'Wrong Option,Select again'
             Score.getMatch()
-    
     @staticmethod
     def getScore(url,mstatus):
-
         while True:
             response = requests.get(url,
                                     headers={'User-agent': 'Mozilla/5.0 (Windows NT '
@@ -60,8 +69,10 @@ class Score(object):
                 try:
                     if match == 'live':
                          print tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text+' '+tag.p.text
-                         if 'run' in tag.p.text:
-                             Score.rknotify(tag.p.text,tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text)
+                         update = [x for x in Score.titles if x in tag.p.text]
+##                         if Score.titles in tag.p.text:
+                         if update:
+                             Score.rknotify(update[0],comm=tag.p.text,ovr=tag.div.find('div',{'class':re.compile('.*cb-ovr-num')}).text)
                     elif match == 'past':
                         if len(tag.p.text) == duplicate:
                             continue
@@ -76,23 +87,17 @@ class Score(object):
                 time.sleep(12)
                 print "\n" *40
     @staticmethod
-    def rknotify(rk,count1):
-       print 'entering'
-       global old
-##       if old == 'first': print count1
-##       print ("before count1 '{}' for old'{}' ".format(count1,old))
-       if count1 != old:
-            notification.notify(
-            title='FOUR',
-            message=rk,
+    def rknotify(update,comm,ovr):
+        if ovr in Score.alert:
+            pass
+        else:
+           notification.notify(
+            title=update,
+            message=("{} {}".format(ovr,comm)),
             app_name='Cricbuzz',
             app_icon='1.ico',
             )
-            old = count1
-##            print ("after count1 '{}' for old'{}' ".format(count1,old))
-       else:
-            print 'cool'
-
+           Score.alert[ovr]=comm
 while True:
     print "\n" * 500
     Score.getMatch()
