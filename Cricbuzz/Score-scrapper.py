@@ -2,6 +2,7 @@ import os, re
 import bs4,time
 import requests
 from plyer import notification
+from playsound import playsound as play
 ##def getscore():
 ##	url = "http://www.espncricinfo.com/icc-cricket-world-cup-2015/engine/match/656493.json"
 ##	r = requests.get(url)
@@ -91,6 +92,7 @@ class Score(object):
         if ovr in Score.alert:
             pass
         else:
+           play('notify.wav')
            notification.notify(
             title=update,
             message=("{} {}".format(ovr,comm)),
