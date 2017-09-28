@@ -95,7 +95,7 @@ class Score(object):
            play('notify.wav')
            notification.notify(
             title=update,
-            message=("{} {}".format(ovr,comm)),
+            message=("{} {}".format(ovr,comm[:250])),
             app_name='Cricbuzz',
             app_icon='1.ico',
             )
